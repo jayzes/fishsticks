@@ -12,7 +12,7 @@ class Fishsticks < Sinatra::Base
   end
 
   get '/' do
-    Haddock::Password.diction = File.join(File.dirname(__FILE__), 'wordlists', params[:dictionary] || settings.default_wordlist)
+    Haddock::Password.diction = File.join(File.dirname(__FILE__), 'wordlists', params[:wordlist] || settings.default_wordlist)
     Haddock::Password.delimiters = (params[:delimiters] || settings.default_delimiters)
     Haddock::Password.generate((params[:length] || settings.default_length).to_i).to_json
   end
